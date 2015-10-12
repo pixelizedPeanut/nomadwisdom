@@ -1,0 +1,71 @@
+
+/* _____RESET_____ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot { margin: 0; padding: 0; border: 0; outline: 0; }
+table, tr, th, td { margin: 0; padding: 0; outline: 0; font-size: 100%; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+:focus { outline: 0; }
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+table { border-collapse: collapse; border-spacing: 0; }
+a img { border: 0px; }
+small { font-size: 11px; line-height:15px; } 
+img { -ms-interpolation-mode: bicubic; } /* IE will rander html resized images decent */
+
+.clear { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
+.clearfix { display:inline-block; display:block; }
+.clearfix:after { clear:both; content:' '; display:block; font-size:0; line-height:0; visibility:hidden; width:0; height:0; }
+* html .clearfix, *:first-child+html .clearfix { zoom:1 }
+
+/* ___END_RESET___ */
+
+
+/* grid start */
+.wrap { display:block; width:100%; max-width: 1200px; margin:0 auto; }
+.col-1,.col-2,.col-2p5,.col-3,.col-4 { box-sizing: border-box; -moz-box-sizing: border-box; }
+.col-1 { width: 30%; }
+.col-2 { width: 40%; }
+.col-2p5 { width: 60%; }
+.col-3 { width: 70%; }
+.col-4 { width: 100%; }
+
+@media ( max-width:900px )
+{
+    .wrap { max-width: 650px; }
+    .col-1, .col-2, .col-2p5, .col-3 { width: 100%; }
+}
+
+/* grid end */
+
+
+/* fonts start */
+body { font-family: 'Open Sans', sans-serif; font-weight: 400; color:#49473a; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Josefin Sans', sans-serif; color:#302b08; }
+h4 { font-size: 16px; font-weight: 600; }
+h5 { font-size: 14px; font-weight: 300; }
+/* fonts end */
+
+
+/* content start */
+body { background: #d9d8d2; }
+header { background:#1e4564; height:70px; width:100%; }
+h1 { color:#fff; font-size:30px; font-weight: 100; padding-left: 20px; padding-top:20px; line-height: 50px; }
+.main-content { padding-top: 10px; }
+article { padding:10px; float:left; }
+article h3 { padding-bottom: 5px; }
+article h4 { padding-top: 10px; padding-bottom: 5px; }
+article h5 { padding-bottom: 10px; margin-top:-5px; text-align: right;  }
+article p { font-size: 14px; }
+article p quote:before { content:'"'; }
+article p quote { display:block; width: 100%; text-align: center; font-size: 22px; font-weight: 600; margin:20px 0; }
+article p quote:after { content:'"'; } 
+article img { width:100%; margin-bottom:10px; }
+/* content end */
+
+
+/* ___ALWAYS_LAST___ */
+
+.hide { display:none; }
