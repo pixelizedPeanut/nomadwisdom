@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="newsFeed">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <style>
+            .nopadding {
+                padding: 0 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h2 class="text-center">– new to you –</h2>
+        </header>
+        
+        <div class="col-sm-4 col-xs-12 nopadding" ng-controller="natureController as nature">
+            <div class="list-group-item" ng-repeat="aberatii in nature.news.item">
+                <h3> {{ aberatii.title }} </h3>
+                <a ng-href="{{aberatii.link}}"> {{ aberatii.description }} </a>
+            </div>
+        </div>
+       <div class="col-sm-4 col-xs-12 nopadding" ng-controller="scienceController as science">
+            <div class="list-group-item" ng-repeat="aberatii in science.news.item">
+                <h3> {{ aberatii.title }} </h3>
+                <a ng-href="{{aberatii.link}}"> {{ aberatii.description }} </a>
+            </div>
+        </div>
+       <div class="col-sm-4 col-xs-12 nopadding" ng-controller="usController as us">
+            <div class="list-group-item" ng-repeat="aberatii in us.news.item">
+                <h4> {{ aberatii.description }} </h4>
+                <a ng-href="{{aberatii.link}}"> Read more... </a>
+            </div>
+        </div>
+        
+    </body>
+</html>
