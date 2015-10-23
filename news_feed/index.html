@@ -5,7 +5,6 @@
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
-    <script src="angular-masonry.js"></script>	
     <script src="feeds.js"></script>
     <script src="libs.js"></script>  
     <link href="main.css" rel='stylesheet' type='text/css' >
@@ -19,6 +18,7 @@
         <small ng-repeat="cat in feed.categories">Categories: {{cat}}</small>
         <p>{{feed.author}}</p>
         <p>{{feed.content}}</p>
+        <small>{{feed.source}}</small>
         <small>{{feed.publishedDate | date : 'EEEE, d MMMM yyyy'}}</small>
     </div>
 </div>
