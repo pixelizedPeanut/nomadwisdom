@@ -21,6 +21,7 @@ angular.module('feedModule', ['ngResource'])
 						feeds.push(feed);
                         for (var i=0; i<feed.entries.length; i++) {
                             var entrie = feed.entries[i];
+                            entrie.source = feed.title;
                             entrie.content = strip_tags(entrie.content, "");
                             entrie.title = entrie.title.replace(/\[[\s\S]+\]/,'');
                             entrie.publishedDate = new Date(entrie.publishedDate).getTime();
