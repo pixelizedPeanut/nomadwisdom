@@ -33,7 +33,7 @@ var field = svg.selectAll("g")
 
 field.append("path");
 
-field.append("text");
+//field.append("text");
 
 d3.transition().duration(0).each(tick);
 
