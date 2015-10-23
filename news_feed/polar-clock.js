@@ -24,7 +24,7 @@ var arc = d3.svg.arc()
 var svg = d3.select("span").append("svg")
     .attr("width", width)
     .attr("height", height)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 var field = svg.selectAll("g")
@@ -40,6 +40,20 @@ d3.transition().duration(0).each(tick);
 d3.select(self.frameElement).style("height", height + "px");
 
 function tick() {
+    
+    // getting params every second
+    var new_width = parseInt(document.getElementById('clock').offsetWidth);
+    if(new_width != width)
+    {
+        width = new_width
+        height = width;
+        radius = Math.min(width, height) / 1.9;
+
+        d3.select("svg").attr("width", width).attr("height", height);
+        d3.select("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    }
+    // end
+    
   field = field
       .each(function(d) { this._value = d.value; })
       .data(fields)
