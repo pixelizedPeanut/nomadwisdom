@@ -16,7 +16,7 @@ angular.module('feedModule', ['ngResource'])
 			];
 			if (feeds.length === 0) {
 				for (var i=0; i<feedSources.length; i++) {
-					FeedLoader.fetch({q: feedSources[i].url, num: 30}, {}, function (data) {
+					FeedLoader.fetch({q: feedSources[i].url, num: 15}, {}, function (data) {
 						var feed = data.responseData.feed;
 						feeds.push(feed);
                         for (var i=0; i<feed.entries.length; i++) {
