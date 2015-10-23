@@ -23,18 +23,18 @@ img { -ms-interpolation-mode: bicubic; } /* IE will rander html resized images d
 
 
 /* grid start */
-.wrap { display:block; width:95%; max-width: 1200px; margin:0 auto; column-count: 3;}
+.wrap { display:block; width:95%; max-width: 1200px; margin:0 auto; -moz-column-count: 3; -webkit-column-count: 3; column-count: 3; }
 
 .element { padding-bottom: 15px; }
 
 @media (max-width: 768px )
 {
-    .wrap { column-count: 2;}
+    .wrap { -moz-column-count: 2; -webkit-column-count: 2; column-count: 2;}
 }
 
 @media ( max-width:450px )
 {
-    .wrap { column-count: 1;}
+    .wrap { -moz-column-count: 1; -webkit-column-count: 1; column-count: 1;}
 }
 
 /* grid end */
