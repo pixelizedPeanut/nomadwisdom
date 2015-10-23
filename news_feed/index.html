@@ -15,11 +15,13 @@
  
 <div class="wrap">
 	<div class="element" ng-repeat="feed in article | orderBy : '-publishedDate' ">
-        <a href="{{feed.link}}" target="_blank">{{feed.title}}</a><br />
-        <small ng-repeat="cat in feed.categories">Categories: {{cat}}</small>
-        <p>{{feed.author}}</p>
-        <p>{{feed.content}}</p>
-        <small>{{feed.publishedDate | date : 'EEEE, d MMMM yyyy'}}</small>
+        <a href="{{feed.link}}"target="_blank">
+            <h4>{{feed.title}}</h4>
+            <small ng-repeat="cat in feed.categories">Categories: {{cat}}</small>
+            <p>{{feed.author}}</p>
+            <p>{{feed.content}}</p>
+            <small>{{feed.publishedDate | date : 'EEEE, d MMMM yyyy'}}</small>
+        </a>
     </div>
 </div>
 </body>
