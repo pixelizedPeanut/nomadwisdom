@@ -1,40 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="newsFeed">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-        <style>
-            .nopadding {
-                padding: 0 !important;
-            }
-        </style>
-    </head>
-
-    <body>
-        <header>
-            <h2 class="text-center">– new to you –</h2>
-        </header>
-        
-        <div class="col-sm-4 col-xs-12 nopadding" ng-controller="natureController as nature">
-            <div class="list-group-item" ng-repeat="aberatii in nature.news.item">
-                <h3> {{ aberatii.title }} </h3>
-                <a ng-href="{{aberatii.link}}"> {{ aberatii.description }} </a>
-            </div>
-        </div>
-       <div class="col-sm-4 col-xs-12 nopadding" ng-controller="scienceController as science">
-            <div class="list-group-item" ng-repeat="aberatii in science.news.item">
-                <h3> {{ aberatii.title }} </h3>
-                <a ng-href="{{aberatii.link}}"> {{ aberatii.description }} </a>
-            </div>
-        </div>
-       <div class="col-sm-4 col-xs-12 nopadding" ng-controller="usController as us">
-            <div class="list-group-item" ng-repeat="aberatii in us.news.item">
-                <h4> {{ aberatii.description }} </h4>
-                <a ng-href="{{aberatii.link}}"> Read more... </a>
-            </div>
-        </div>
-        
-    </body>
+<html ng-app='feedModule'>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+    <script src="angular-masonry.js"></script>	
+    <script src="feeds.js"></script>
+    <script src="libs.js"></script>  
+    <link href="main.css" rel='stylesheet' type='text/css' >
+</head>
+ 
+<body ng-controller='FeedCtrl'>
+ 
+<div class="wrap">
+	<div class="element" ng-repeat="feed in article | orderBy : '-publishedDate' ">
+        <a href="{{feed.link}}" target="_blank">{{feed.title}}</a><br />
+        <small ng-repeat="cat in feed.categories">Categories: {{cat}}</small>
+        <p>{{feed.author}}</p>
+        <p>{{feed.content}}</p>
+        <small>{{feed.publishedDate | date : 'EEEE, d MMMM yyyy'}}</small>
+    </div>
+</div>
+</body>
 </html>

@@ -1,1 +1,0 @@
-<?php echo json_encode(simplexml_load_file($_GET['url'])); ?>
