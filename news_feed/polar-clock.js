@@ -6,10 +6,7 @@ var width = parseInt(document.getElementById('clock').offsetWidth),
 
 var formatSecond = d3.time.format("%S s"),
     formatMinute = d3.time.format("%M m"),
-    formatHour = d3.time.format("%H h"),
-    formatDay = d3.time.format("%a"),
-    formatDate = d3.time.format("%d d"),
-    formatMonth = d3.time.format("%b");
+    formatHour = d3.time.format("%H h");
 
 var color = d3.scale.linear()
     .range(["hsl(-180,50%,50%)", "hsl(180,50%,50%)"])
@@ -89,10 +86,7 @@ function fields() {
   return [
     {index: .7, text: formatSecond(now), value: now.getSeconds() / 60},
     {index: .6, text: formatMinute(now), value: now.getMinutes() / 60},
-    {index: .5, text: formatHour(now),   value: now.getHours() / 24},
-    {index: .3, text: formatDay(now),    value: now.getDay() / 7},
-    {index: .2, text: formatDate(now),   value: (now.getDate() - 1) / (32 - new Date(now.getYear(), now.getMonth(), 32).getDate())},
-    {index: .1, text: formatMonth(now),  value: now.getMonth() / 12}
+    {index: .5, text: formatHour(now),   value: now.getHours() / 12}
   ];
 }
 

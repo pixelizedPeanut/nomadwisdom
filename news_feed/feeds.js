@@ -26,7 +26,7 @@ angular.module('feedModule', ['ngResource'])
                             entrie.title = entrie.title.replace(/\[[\s\S]+\]/,'');
                             entrie.publishedDate = new Date(entrie.publishedDate).getTime();
                             article.push(entrie);
-                            //console.log(entrie);
+                            console.log(entrie);
                         };
 					}); 
 				}
