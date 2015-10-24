@@ -29,14 +29,9 @@ angular.module('feedModule', ['ngResource'])
                             entrie.content = strip_tags(entrie.content, "");
                             entrie.title = entrie.title.replace(/\[[\s\S]+\]/,'');
                             entrie.publishedDate = new Date(entrie.publishedDate).getTime();
-<<<<<<< HEAD
                             entrie.recent = Math.ceil((now - entrie.publishedDate)/86400000);
                             if (entrie.recent < 8) {article.push(entrie);
                             console.log(entrie);    }
-=======
-                            article.push(entrie);
-                            //console.log(entrie);
->>>>>>> 332460a6193043cddbf45c635866dd805accce47
                         };
 					}); 
 				}
