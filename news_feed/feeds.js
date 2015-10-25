@@ -30,8 +30,10 @@ angular.module('feedModule', ['ngResource'])
                             entrie.title = entrie.title.replace(/\[[\s\S]+\]/,'');
                             entrie.publishedDate = new Date(entrie.publishedDate).getTime();
                             entrie.recent = Math.ceil((now - entrie.publishedDate)/86400000);
-                            if (entrie.recent < 8) {article.push(entrie);
-                            console.log(entrie);    }
+                            if (entrie.recent < 8) {
+                                article.push(entrie);
+                                console.log(entrie);
+                            }
                         };
 					}); 
 				}
