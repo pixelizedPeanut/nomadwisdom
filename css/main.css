@@ -65,9 +65,9 @@ article h3 { padding-bottom: 5px; }
 article h4 { padding-top: 10px; padding-bottom: 5px; }
 article h5 { padding-bottom: 10px; margin-top:-5px; text-align: right;  }
 article p { font-size: 14px; padding-bottom:10px; }
-article p quote:before { content:'"'; }
-article p quote { display:block; width: 100%; text-align: center; font-size: 22px; font-weight: 600; margin:20px 0; }
-article p quote:after { content:'"'; } 
+article quote:before { content:'“'; }
+article quote { display:block; width: 100%; text-align: center; font-size: 22px; font-weight: 600; margin:20px 0; }
+article quote:after { content:'”'; } 
 article img { width:100%; margin-bottom:10px; }
 /* content end */
 
