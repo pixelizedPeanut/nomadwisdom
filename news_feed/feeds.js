@@ -1,5 +1,10 @@
 var feeds = [];
-var article = [];	
+var article = [];
+for(var l = 0; l < 8; l++) {
+    article.push([]);
+};
+var entries = article[7];
+
 
 angular.module('feedModule', ['ngResource'])
 	.factory('FeedLoader', function ($resource) {
@@ -13,6 +18,7 @@ angular.module('feedModule', ['ngResource'])
 				{title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
                 {title: 'NatureNanoTech', url: 'http://feeds.nature.com/nnano/rss/current?format=xml'},
                 {title: 'NatureBioTech', url: 'http://feeds.nature.com/nbt/rss/current?format=xml'},
+                {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'},
 				{title: 'Science', url: 'http://www.sciencemag.org/rss/current.xml'},
 				{title: 'US Research', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
 			];
@@ -30,15 +36,27 @@ angular.module('feedModule', ['ngResource'])
                             entrie.title = entrie.title.replace(/\[[\s\S]+\]/,'');
                             entrie.publishedDate = new Date(entrie.publishedDate).getTime();
                             entrie.recent = Math.ceil((now - entrie.publishedDate)/86400000);
-                            if (entrie.recent < 8) {
-                                article.push(entrie);
-                                console.log(entrie);
-                            }
+
+                            entries.push(entrie);// push them all like this
+                            console.log(entrie);
+
                         };
-					}); 
-				}
+					});
+                    //if i e max si k e max
+                    // apoi recontruite pe: min&min+1, min+2, etc
+                    for (var p=0; p<entries.length; p++) {
+
+                        if (entries[p].recent == min) {
+                            article[0].push(entries[p]);
+                        }
+                        else if (entries[p].recent < 7) { 
+                            article[entries[p].recent].push(entries[p]);       
+                        }       
+                    };
+				};
+                 // than for again prin toate pentru a determina min entrie.recent
+                
 			}
-            
             return article;
 		};
 	})
@@ -49,3 +67,22 @@ angular.module('feedModule', ['ngResource'])
             
 		});
 	});
+
+function myMin(min) {
+    var min = 5;
+    for (var m=0; m<entries.length; m++) {
+        min = entries[m].recent < min ? entries[m].recent : min;
+        console.log(min);
+        return min;
+    } 
+}
+
+function gheorghe(nume) { return ('Gheorghe ' + nume) }
+var gigi = gheorghe('Gigel');
+console.log(gigi);
+
+
+
+
+//daca article de 0 empty what
+//check entrue recent si make article 0 din min&min+1
