@@ -3,7 +3,6 @@ var width = parseInt(document.getElementById('clock').offsetWidth),
     radius = Math.min(width, height) / 1.9,
     spacing = .09;
 
-
 var formatSecond = d3.time.format("%S s"),
     formatMinute = d3.time.format("%M m"),
     formatHour = d3.time.format("%I h");
@@ -26,7 +25,7 @@ var svg = d3.select("span").append("svg")
 
 var field = svg.selectAll("g")
     .data(fields)
-  .enter().append("g");
+    .enter().append("g");
 
 field.append("path");
 

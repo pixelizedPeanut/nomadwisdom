@@ -23,7 +23,7 @@ img { -ms-interpolation-mode: bicubic; } /* IE will rander html resized images d
 
 
 /* grid start */
-.wrap { display:block; width:95%; max-width: 1200px; margin:0 auto; -moz-column-count: 3; -webkit-column-count: 3; column-count: 3; -moz-column-gap: 0px; -webkit-column-gap: 0px; column-gap: 0px;}
+.wrap { display:block; width:95%; max-width: 1200px; margin:0 auto; -moz-column-count: 3; -webkit-column-count: 3; column-count: 3; -moz-column-gap: 0px; -webkit-column-gap: 0px; column-gap: 0px; padding-bottom: 50px;}
 
 span { display: block; width: 100%; height: auto; }
 
