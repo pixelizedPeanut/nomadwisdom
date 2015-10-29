@@ -6,7 +6,7 @@ var width = parseInt(document.getElementById('clock').offsetWidth),
 
 var formatSecond = d3.time.format("%S s"),
     formatMinute = d3.time.format("%M m"),
-    formatHour = d3.time.format("%H h");
+    formatHour = d3.time.format("%I h");
 
 var color = d3.scale.linear()
     .range(["hsl(-180,50%,50%)", "hsl(180,50%,50%)"])
@@ -86,9 +86,18 @@ function fields() {
   return [
     {index: .7, text: formatSecond(now), value: now.getSeconds() / 60},
     {index: .6, text: formatMinute(now), value: now.getMinutes() / 60},
-    {index: .5, text: formatHour(now),   value: now.getHours() / 12}
+    {index: .5, text: formatHour(now),   value: shortHours(now)}
   ];
 }
+
+// 12 hour format short hours
+function shortHours(date){
+    var hours = date.getHours();
+    hours %= 12;
+    hours /= 12;
+    return hours;
+}
+
 
 // Avoid shortest-path interpolation.
 function interpolateHsl(a, b) {
