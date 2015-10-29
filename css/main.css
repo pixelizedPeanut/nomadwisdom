@@ -46,7 +46,7 @@ img { -ms-interpolation-mode: bicubic; } /* IE will rander html resized images d
 {
     .wrap { max-width: 800px; }
     .col-1, .col-2, .col-2p5, .col-3 { width: 50%; }
-    img { width: 50%!important; margin:10px !important; }
+    img { width: 100%!important; margin:10px 0 !important; }
 }
 
 @media ( max-width:767px )
@@ -57,14 +57,14 @@ img { -ms-interpolation-mode: bicubic; } /* IE will rander html resized images d
 
 @media ( max-width:320px )
 {
-    img { width: 40%!important; margin:5px !important; }
+    img { width: 100%!important; margin:5px 0 !important; }
 }
 /* grid end */
 
 
 /* fonts start */
 body { font-family: 'Open Sans', sans-serif; font-weight: 400; color:#49473a; }
-h1, h2, h3, h4, h5, h6 { font-family: 'Josefin Sans', sans-serif; color:#302b08; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Josefin Sans', sans-serif; color:#302b08; box-sizing: border-box; -moz-box-sizing: border-box; }
 h4 { font-size: 16px; font-weight: 600; }
 h5 { font-size: 14px; font-weight: 300; }
 /* fonts end */
