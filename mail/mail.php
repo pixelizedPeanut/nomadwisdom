@@ -41,9 +41,9 @@
         $body = $_POST['message'];
         
         $header = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
         $headers .= 'To: ' . $to . "\r\n";
-        $headers .= 'From: mail tester bwin <dan.vasiliu@bwinparty.com>' . "\r\n";
+        $headers .= 'From: dan\'s mail tester <dan.vasiliu@bwinparty.com>' . "\r\n";
         $headers .= 'X-Mailer: PHP/' . phpversion();
         
         $success = mail($to, $subject, $body, $headers);
