@@ -7,7 +7,7 @@
 <body>
     
     <h3>mail test</h3>
-    <form action="https://ma1.itsfogo.com/dev/DanV/mail.php" target="_self" method="post">
+    <form action="http://nomadwisdom.xyz/mail/mail.php" target="_self" method="post">
         <label for="email">To: </label><br />
         <input id="email" name="email" type="text" /><br /><br />
         
