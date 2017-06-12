@@ -1,0 +1,25 @@
+{
+  "name": "nomadwisdom",
+  "version": "1.0.0",
+  "description": "Fun project",
+  "main": "index.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelizedPeanut/nomadwisdom.git"
+  },
+  "keywords": [
+    "science"
+  ],
+  "author": "pixelizedPeanut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixelizedPeanut/nomadwisdom/issues"
+  },
+  "homepage": "https://github.com/pixelizedPeanut/nomadwisdom#readme",
+  "devDependencies": {
+    "vue-cli": "^2.8.2"
+  }
+}
