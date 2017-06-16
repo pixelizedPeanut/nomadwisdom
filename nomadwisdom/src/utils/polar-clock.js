@@ -29,14 +29,12 @@ var field = svg.selectAll("g")
 
 field.append("path");
 
-//field.append("text");
-
 d3.transition().duration(0).each(tick);
 
 d3.select(self.frameElement).style("height", height + "px");
 
 function tick() {
-    
+
     // getting params every second
     var new_width = parseInt(document.getElementById('clock').offsetWidth);
     if(new_width != width)
@@ -49,7 +47,7 @@ function tick() {
         d3.select("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
     }
     // end
-    
+
   field = field
       .each(function(d) { this._value = d.value; })
       .data(fields)

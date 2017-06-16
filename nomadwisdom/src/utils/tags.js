@@ -1,3 +1,6 @@
+export default {
+  strip_tags: strip_tags
+}
 
 function strip_tags(input, allowed) {
   allowed = (((allowed || '') + '')
