@@ -1,5 +1,6 @@
 <template>
 <div class="news">
+  <!-- <div id="clock"></div> -->
   <div v-for="feed in feeds">
     <h4 class="title">{{ feed }}</h4>
     <div class="wrap">
@@ -14,37 +15,44 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+// import clock from '../utils/polar-clock'
+
+const FEEDS = [
+  'Futurism',
+  'ScienceRobotics',
+  'NatureCurrent',
+  'NatureAOP',
+  'NatureNewsComment',
+  'NatureNanoTech',
+  'Science',
+  'NatureBioTech',
+  'USResearch'
+]
+
 export default {
   name: 'news',
   created () {
     this.setFeeds()
+    this.setFuturism()
   },
+  // mounted () {
+  //   clock()
+  // },
   data () {
     return {
-      feeds: [
-        'NatureAOP',
-        'NatureNewsComment',
-        'NatureNanoTech',
-        'NatureBioTech',
-        'USResearch'
-      ]
+      feeds: FEEDS
     }
   },
   filters: {
     blank: v => typeof v === 'object' ? null : v
   },
   computed: {
-    ...mapGetters([
-      'NatureAOP',
-      'NatureNewsComment',
-      'NatureNanoTech',
-      'NatureBioTech',
-      'USResearch'
-    ])
+    ...mapGetters(FEEDS)
   },
   methods: {
     ...mapActions([
-      'setFeeds'
+      'setFeeds',
+      'setFuturism'
     ])
   }
 }
