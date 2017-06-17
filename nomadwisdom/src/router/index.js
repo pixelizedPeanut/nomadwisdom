@@ -13,7 +13,7 @@ export default new Router({
     //   component: Hello
     // },
     {
-      path: '/',
+      path: '/news_feed',
       name: 'News Feed',
       component: News
     }

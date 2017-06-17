@@ -1,10 +1,9 @@
 <template>
 <div class="news">
-  <div v-for="feed in getStream" v-if="feed" :title="feed.channel.description">
-    <h4 class="title">{{ feed.channel.title }}</h4>
+  <div v-for="feed in feeds">
+    <h4 class="title">{{ feed }}</h4>
     <div class="wrap">
-      <h1>h</h1>
-      <a class="element" v-for="a in feed.item" v-if="a" :href="a.link" target="_blank">
+      <a class="element" v-for="a in $store.getters[feed]" :href="a.link" target="_blank">
         <p>{{ a.title | blank }}</p>
         <p>{{ a.description | blank }}</p>
       </a>
@@ -14,18 +13,20 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'news',
+  created () {
+    this.setFeeds()
+  },
   data () {
     return {
-      stream: [],
-      base: 'http://nomadwisdom.tk/utilities/curlProxy.php?url=',
       feeds: [
-        {title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
-        {title: 'NatureNanoTech', url: 'http://feeds.nature.com/nnano/rss/current?format=xml'},
-        {title: 'NatureBioTech', url: 'http://feeds.nature.com/nbt/rss/current?format=xml'},
-        {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'},
-        {title: 'US Research', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'}
+        'NatureAOP',
+        'NatureNewsComment',
+        'NatureNanoTech',
+        'NatureBioTech',
+        'USResearch'
       ]
     }
   },
@@ -33,23 +34,18 @@ export default {
     blank: v => typeof v === 'object' ? null : v
   },
   computed: {
-    getStream () {
-      return this.stream
-    }
+    ...mapGetters([
+      'NatureAOP',
+      'NatureNewsComment',
+      'NatureNanoTech',
+      'NatureBioTech',
+      'USResearch'
+    ])
   },
   methods: {
-    getFeeds () {
-      this.feeds.map((feed, i) => {
-        window.fetch(this.base + encodeURIComponent(this.feeds[i].url), {
-          method: 'GET'
-        }).then(res => res.json()).then(res => {
-          this.stream[i] = res
-        })
-      })
-    }
-  },
-  mounted () {
-    this.getFeeds()
+    ...mapActions([
+      'setFeeds'
+    ])
   }
 }
 </script>
