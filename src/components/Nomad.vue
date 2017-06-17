@@ -45,7 +45,8 @@
 
       <article class="col-2">
         <h3>Feed me!</h3>
-        <p class="action" @click="readTheNews()">Read the news!</p>
+        <p class="action" @click="read('/news_feed')">Read the news!</p>
+        <p class="action" @click="read('/page2')">Read Page2</p>
       </article>
     </div>
   </div>
@@ -61,8 +62,8 @@ export default {
     }
   },
   methods: {
-    readTheNews () {
-      this.$router.push('/news_feed')
+    read (link) {
+      this.$router.push(link)
     }
   }
 }
