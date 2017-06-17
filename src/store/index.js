@@ -6,39 +6,48 @@ import feedStore from './feed'
 Vue.use(Vuex)
 
 const FEEDS = [
+  // #0
   {title: 'NatureCurrent', url: 'http://feeds.nature.com/srep/rss/current'},
+  // #1
   {title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
+  // #2
   {title: 'NatureNanoTech', url: 'http://feeds.nature.com/nnano/rss/current?format=xml'},
+  // #3
   {title: 'NatureBioTech', url: 'http://feeds.nature.com/nbt/rss/current?format=xml'},
+  // #4
   {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'},
+  // #5
   {title: 'USResearch', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
+  // #6
   {title: 'Science', url: 'http://science.sciencemag.org/rss/express.xml'},
+  // #7
   {title: 'ScienceRobotics', url: 'http://robotics.sciencemag.org/rss/current.xml'},
+  // #8
   {title: 'NatureGeoScience', url: 'https://www.nature.com/ngeo/journal/vaop/ncurrent/rss.rdf'},
-  {title: 'NatureGeoScienceCurrent', url: 'http://www.nature.com/ngeo/current_issue/rss/index.html'}
+  // #9
+  {title: 'NatureGeoScienceCurrent', url: 'http://www.nature.com/ngeo/current_issue/rss/index.html'},
+  // #10
+  {title: 'ScienceAdvanced', url: 'http://advances.sciencemag.org/rss/current.xml'},
+  // #11
+  {title: 'Futurism', url: 'https://futurism.com/feed/'},
+  // #12
+  {title: 'SomeNews', url: 'https://www.sciencenews.org/feeds/headlines.rss'},
+  // #13
+  {title: 'MostRecent'}
 ]
-
-const PAGE2 = [
-  {title: 'ScienceAdvanced', url: 'http://advances.sciencemag.org/rss/current.xml'}
-]
-
-const FUTURISM = {title: 'Futurism', url: 'https://futurism.com/feed/'}
-const SOME = {title: 'SomeNews', url: 'https://www.sciencenews.org/feeds/headlines.rss'}
 
 let news = FEEDS.reduce((g, f) => {
   g[f.title] = feedStore(f.title)
   return g
 }, {})
 
-let news2 = PAGE2.reduce((g, f) => {
-  g[f.title] = feedStore(f.title)
-  return g
-}, {})
+function setFeedA (i, commit) {
+  return api.getFeeds(FEEDS[i].url).then(res => commit(news[FEEDS[i].title].types.SET, res.item))
+}
 
-let Futurism = feedStore(FUTURISM.title)
-let SomeNews = feedStore(SOME.title)
-
-let mostRecent = feedStore('mostRecent')
+function setFeedB (i, commit) {
+  return api.getFeeds(FEEDS[i].url).then(res => commit(news[FEEDS[i].title].types.SET, res.channel.item))
+}
 
 const actions = {
   /*eslint-disable*/
@@ -56,23 +65,35 @@ const actions = {
    * @return {Promise}
    */
   setFeeds ({ commit }) {
-    FEEDS.map((feed, i) => {
-      return api.getFeeds(feed.url).then(res => commit(news[feed.title].types.SET, res.item))
+    return setFeedA(1, commit).then(() => {
+      return setFeedA(2, commit).then(() => {
+        return setFeedA(3, commit).then(() => {
+          return setFeedA(4, commit).then(() => {
+            return setFeedB(12, commit)
+          })
+        })
+      })
+    })
+  },
+
+  setFeeds2 ({ commit }) {
+    return setFeedA(5, commit).then(() => {
+      return setFeedA(6, commit).then(() => {
+        return setFeedA(7, commit).then(() => {
+          return setFeedA(8, commit).then(() => {
+            return setFeedA(9, commit)
+          })
+        })
+      })
     })
   },
 
   setFuturism ({ commit }) {
-    return api.getFeeds(FUTURISM.url).then(res => commit(Futurism.types.SET, res.channel.item))
-  },
-
-  setSome ({ commit }) {
-    return api.getFeeds(SOME.url).then(res => commit(SomeNews.types.SET, res.channel.item))
+    return setFeedB(11, commit)
   },
 
   setPage2 ({ commit }) {
-    PAGE2.map((feed, i) => {
-      return api.getFeeds(feed.url).then(res => commit(news2[feed.title].types.SET, res.item))
-    })
+    return setFeedA(10, commit)
   },
 
   setMostRecent ({ commit, state }) {
@@ -88,6 +109,10 @@ const actions = {
     let today = ((myDate.getTime()) - (3600 * 24 * past * 1000))
 
     let current = FEEDS.reduce((ac, feed) => {
+      if (feed.title === 'MostRecent') {
+        return ac
+      }
+
       let found = state[feed.title].array.filter(i => {
         return new Date(i.publicationDate).getTime() >= today
       })
@@ -95,15 +120,7 @@ const actions = {
       return ac.concat(found)
     }, [])
 
-    current = current.concat(PAGE2.reduce((ac, feed) => {
-      let found = state[feed.title].array.filter(i => {
-        return new Date(i.publicationDate).getTime() >= today
-      })
-
-      return ac.concat(found)
-    }, []))
-
-    commit(mostRecent.types.SET, current)
+    commit(news.MostRecent.types.SET, current)
   }
 }
 
@@ -113,15 +130,7 @@ const getters = FEEDS.reduce((g, f) => {
   }
 
   return g
-}, {
-  Futurism: state => state.Futurism.array,
-  SomeNews: state => state.SomeNews.array,
-  mostRecent: state => state.mostRecent.array
-})
-
-PAGE2.map(f => {
-  getters[f.title] = state => state[f.title].array
-})
+}, {})
 
 // Create the store
 var store = new Vuex.Store({
@@ -134,28 +143,6 @@ FEEDS.map(f => {
     mutations: news[f.title].mutations,
     state: news[f.title].state
   })
-})
-
-PAGE2.map(f => {
-  store.registerModule(f.title, {
-    mutations: news2[f.title].mutations,
-    state: news2[f.title].state
-  })
-})
-
-store.registerModule('Futurism', {
-  mutations: Futurism.mutations,
-  state: Futurism.state
-})
-
-store.registerModule('SomeNews', {
-  mutations: SomeNews.mutations,
-  state: SomeNews.state
-})
-
-store.registerModule('mostRecent', {
-  mutations: mostRecent.mutations,
-  state: mostRecent.state
 })
 
 export default store

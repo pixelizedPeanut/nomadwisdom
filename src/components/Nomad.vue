@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1 class="wrap"><i class="ico-spin6 animate-spin"></i>Nomad Wisdom</h1>
+  <h1 class="wrap">Nomad Wisdom</h1>
   <div class="main-content wrap">
     <div class="article-box col-2">
       <article class="col-4">
@@ -90,6 +90,4 @@ img {
   padding-left: 5px;
   letter-spacing: 10px;
 }
-
-
 </style>

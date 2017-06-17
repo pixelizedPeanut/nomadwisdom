@@ -3,7 +3,7 @@
   <!-- <div id="clock"></div> -->
   <h4 class="title">Most Recent</h4>
   <div class="wrap">
-    <a class="element" v-for="a in $store.getters.mostRecent" :href="a.link" target="_blank">
+    <a class="element" v-for="a in $store.getters.MostRecent" :href="a.link" target="_blank">
       <p>{{ a.title | blank }}</p>
       <p v-html="a.description"></p>
       <span>{{ a.publicationName }}</span>
@@ -26,10 +26,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-// import clock from '../utils/polar-clock'
 
 const FEEDS = [
-  'mostRecent',
+  'MostRecent',
   'Futurism',
   'NatureGeoScience',
   'NatureGeoScienceCurrent',
@@ -48,16 +47,13 @@ export default {
   name: 'news',
   created () {
     this.ga()
-    this.setFeeds()
-    this.setPage2()
-    this.setSome()
-    this.setFuturism().then(() => {
-      this.setMostRecent()
-    })
+    Promise.all([
+      this.setFeeds(),
+      this.setFeeds2(),
+      this.setPage2(),
+      this.setFuturism()
+    ]).then(() => this.setMostRecent())
   },
-  // mounted () {
-  //   clock()
-  // },
   data () {
     return {
       feeds: FEEDS
@@ -74,19 +70,15 @@ export default {
     ...mapActions([
       'ga',
       'setFeeds',
+      'setFeeds2',
       'setFuturism',
       'setMostRecent',
-      'setPage2',
-      'setSome'
+      'setPage2'
     ])
   }
 }
 </script>
 <style scoped>
-#clock {
-  font-size: 8px;
-}
-
 a.element {
   display:block;
   padding:15px;
