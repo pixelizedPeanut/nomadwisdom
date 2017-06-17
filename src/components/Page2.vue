@@ -6,6 +6,7 @@
       <a class="element" v-for="a in $store.getters[feed]" :href="a.link" target="_blank">
         <p>{{ a.title | blank }}</p>
         <p v-html="a.description"></p>
+        <span>{{ a.publicationDate }}</span>
       </a>
     </div>
   </div>
@@ -22,6 +23,7 @@ export default {
   name: 'page2',
   created () {
     this.setPage2()
+    this.ga()
   },
   data () {
     return {
@@ -36,7 +38,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setPage2'
+      'setPage2',
+      'ga'
     ])
   }
 }

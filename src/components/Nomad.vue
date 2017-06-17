@@ -54,8 +54,12 @@
 </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'nomad',
+  created () {
+    this.ga()
+  },
   data () {
     return {
       article: 'Welcome to Your Vue.js App'
@@ -64,7 +68,10 @@ export default {
   methods: {
     read (link) {
       this.$router.push(link)
-    }
+    },
+    ...mapActions([
+      'ga'
+    ])
   }
 }
 </script>

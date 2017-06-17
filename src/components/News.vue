@@ -1,12 +1,23 @@
 <template>
 <div class="news">
   <!-- <div id="clock"></div> -->
-  <div v-for="feed in feeds">
+  <h4 class="title">Most Recent</h4>
+  <div class="wrap">
+    <a class="element" v-for="a in $store.getters.mostRecent" :href="a.link" target="_blank">
+      <p>{{ a.title | blank }}</p>
+      <p v-html="a.description"></p>
+      <span>{{ a.publicationName }}</span>
+      <span>{{ a.publisher }}</span>
+      <span>{{ a.publicationDate }}</span>
+    </a>
+  </div>
+  <div v-for="feed in feeds" v-if="feed !== feeds[0]">
     <h4 class="title">{{ feed }}</h4>
     <div class="wrap">
       <a class="element" v-for="a in $store.getters[feed]" :href="a.link" target="_blank">
         <p>{{ a.title | blank }}</p>
         <p>{{ a.description | blank }}</p>
+        <span>{{ a | getDate }}</span>
       </a>
     </div>
   </div>
@@ -18,6 +29,7 @@ import { mapGetters, mapActions } from 'vuex'
 // import clock from '../utils/polar-clock'
 
 const FEEDS = [
+  'mostRecent',
   'Futurism',
   'NatureGeoScience',
   'NatureGeoScienceCurrent',
@@ -28,14 +40,20 @@ const FEEDS = [
   'NatureNanoTech',
   'Science',
   'NatureBioTech',
-  'USResearch'
+  'USResearch',
+  'SomeNews'
 ]
 
 export default {
   name: 'news',
   created () {
+    this.ga()
     this.setFeeds()
-    this.setFuturism()
+    this.setPage2()
+    this.setSome()
+    this.setFuturism().then(() => {
+      this.setMostRecent()
+    })
   },
   // mounted () {
   //   clock()
@@ -46,15 +64,20 @@ export default {
     }
   },
   filters: {
-    blank: v => typeof v === 'object' ? null : v
+    blank: v => typeof v === 'object' ? null : v,
+    getDate: v => v.publishedDate || v.pubDate
   },
   computed: {
     ...mapGetters(FEEDS)
   },
   methods: {
     ...mapActions([
+      'ga',
       'setFeeds',
-      'setFuturism'
+      'setFuturism',
+      'setMostRecent',
+      'setPage2',
+      'setSome'
     ])
   }
 }
