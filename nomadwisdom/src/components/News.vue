@@ -67,12 +67,4 @@ a.element:hover {
   text-align: center;
   font-size: 2em;
 }
-
-@media (max-width: 768px ) {
-  .wrap { column-count: 2;}
-}
-
-@media ( max-width:450px ) {
-  .wrap { column-count: 1;}
-}
 </style>

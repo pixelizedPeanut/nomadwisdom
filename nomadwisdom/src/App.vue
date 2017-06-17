@@ -11,6 +11,9 @@ export default {
 </script>
 
 <style>
+html, body { margin: 0; padding: 0; border: 0; outline: 0; }
+body { line-height: 1.2em; }
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,11 +23,6 @@ export default {
   letter-spacing: 0.8px;
   background: #42415b;
   padding-top: 2em;
-}
-
-body {
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -63,5 +61,13 @@ h5 {
   column-count: 3;
   column-gap: 0px;
   padding-bottom: 50px;
+}
+
+@media (max-width: 768px ) {
+  .wrap { column-count: 2;}
+}
+
+@media ( max-width:450px ) {
+  .wrap { column-count: 1;}
 }
 </style>
