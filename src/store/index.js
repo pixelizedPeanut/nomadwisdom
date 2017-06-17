@@ -13,7 +13,9 @@ const FEEDS = [
   {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'},
   {title: 'USResearch', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
   {title: 'Science', url: 'http://science.sciencemag.org/rss/express.xml'},
-  {title: 'ScienceRobotics', url: 'http://robotics.sciencemag.org/rss/current.xml'}
+  {title: 'ScienceRobotics', url: 'http://robotics.sciencemag.org/rss/current.xml'},
+  {title: 'NatureGeoScienceCurrent', url: 'https://www.nature.com/ngeo/journal/vaop/ncurrent/rss.rdf'},
+  {title: 'NatureGeoScience', url: 'http://www.nature.com/ngeo/current_issue/rss/index.html'}
 ]
 
 const FUTURISM = {title: 'Futurism', url: 'https://futurism.com/feed/'}

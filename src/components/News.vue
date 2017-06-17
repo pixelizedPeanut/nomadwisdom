@@ -19,6 +19,8 @@ import { mapGetters, mapActions } from 'vuex'
 
 const FEEDS = [
   'Futurism',
+  'NatureGeoScience',
+  'NatureGeoScienceCurrent',
   'ScienceRobotics',
   'NatureCurrent',
   'NatureAOP',
