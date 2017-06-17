@@ -59,7 +59,7 @@ h5 {
   max-width: 1200px;
   margin:0 auto;
   column-count: 3;
-  column-gap: 0px;
+  column-gap: 15px;
   padding-bottom: 50px;
 }
 

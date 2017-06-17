@@ -45,7 +45,7 @@
 
       <article class="col-2">
         <h3>Feed me!</h3>
-        <p><a href="news_feed/">Read the news!</a></p>
+        <p class="action" @click="readTheNews()">Read the news!</p>
       </article>
     </div>
   </div>
@@ -59,6 +59,11 @@ export default {
     return {
       article: 'Welcome to Your Vue.js App'
     }
+  },
+  methods: {
+    readTheNews () {
+      this.$router.push('/news_feed')
+    }
   }
 }
 </script>
@@ -67,4 +72,16 @@ export default {
 img {
   width: 100%;
 }
+
+.action {
+  cursor: pointer;
+  letter-spacing: 5px;
+}
+
+.action:hover {
+  padding-left: 5px;
+  letter-spacing: 10px;
+}
+
+
 </style>

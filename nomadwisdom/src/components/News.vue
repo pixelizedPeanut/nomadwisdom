@@ -67,4 +67,8 @@ a.element:hover {
   text-align: center;
   font-size: 2em;
 }
+
+.wrap {
+  column-gap: 0px;
+}
 </style>
