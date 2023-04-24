@@ -12,10 +12,10 @@ const FEEDS = [
   {title: 'NatureBioTech', url: 'https://www.nature.com/nbt.rss'},
 //  {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'}, moved under nature
 //  {title: 'USResearch', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
-  {title: 'Science', url: 'https://feeds.science.org/rss/science-aop.xml'},
-  {title: 'ScienceRobotics', url: 'https://feeds.science.org/rss/science-robotics.xml'},
-  {title: 'NatureGeoScienceCurrent', url: 'https://www.nature.com/ngeo.rss'},
-  {title: 'NatureGeoScience', url: 'https://www.nature.com/ngeo/current-issue'} // see location, needs cookie
+//  {title: 'Science', url: 'https://feeds.science.org/rss/science-aop.xml'}, // works
+//  {title: 'ScienceRobotics', url: 'https://feeds.science.org/rss/science-robotics.xml'}, // works
+  {title: 'NatureGeoScienceCurrent', url: 'https://www.nature.com/ngeo.rss'}
+//  {title: 'NatureGeoScience', url: 'https://www.nature.com/ngeo/current-issue'} // see location, needs cookie // works
 ]
 
 const PAGE2 = [

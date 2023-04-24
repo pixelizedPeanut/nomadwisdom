@@ -18,15 +18,15 @@ import { mapGetters, mapActions } from 'vuex'
 // import clock from '../utils/polar-clock'
 
 const FEEDS = [
-  'Futurism',
-  'NatureGeoScience',
+//  'Futurism',
+//  'NatureGeoScience',
   'NatureGeoScienceCurrent',
-  'ScienceRobotics',
+//  'ScienceRobotics',
   'NatureCurrent',
 //  'NatureAOP',
 //  'NatureNewsComment',
   'NatureNanoTech',
-  'Science',
+//  'Science',
   'NatureBioTech'
 //  'USResearch'
 ]
