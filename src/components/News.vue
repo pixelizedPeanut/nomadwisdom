@@ -23,12 +23,12 @@ const FEEDS = [
   'NatureGeoScienceCurrent',
   'ScienceRobotics',
   'NatureCurrent',
-  'NatureAOP',
-  'NatureNewsComment',
+//  'NatureAOP',
+//  'NatureNewsComment',
   'NatureNanoTech',
   'Science',
-  'NatureBioTech',
-  'USResearch'
+  'NatureBioTech'
+//  'USResearch'
 ]
 
 export default {

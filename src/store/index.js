@@ -6,23 +6,23 @@ import feedStore from './feed'
 Vue.use(Vuex)
 
 const FEEDS = [
-  {title: 'NatureCurrent', url: 'http://feeds.nature.com/srep/rss/current'},
-  {title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
-  {title: 'NatureNanoTech', url: 'http://feeds.nature.com/nnano/rss/current?format=xml'},
-  {title: 'NatureBioTech', url: 'http://feeds.nature.com/nbt/rss/current?format=xml'},
-  {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'},
-  {title: 'USResearch', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
-  {title: 'Science', url: 'http://science.sciencemag.org/rss/express.xml'},
-  {title: 'ScienceRobotics', url: 'http://robotics.sciencemag.org/rss/current.xml'},
-  {title: 'NatureGeoScienceCurrent', url: 'https://www.nature.com/ngeo/journal/vaop/ncurrent/rss.rdf'},
-  {title: 'NatureGeoScience', url: 'http://www.nature.com/ngeo/current_issue/rss/index.html'}
+  {title: 'NatureCurrent', url: 'https://www.nature.com/nature.rss'},
+//  {title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
+  {title: 'NatureNanoTech', url: 'https://www.nature.com/nnano.rss'},
+  {title: 'NatureBioTech', url: 'https://www.nature.com/nbt.rss'},
+//  {title: 'NatureAOP', url: 'http://feeds.nature.com/nature/rss/aop?format=xml'}, moved under nature
+//  {title: 'USResearch', url: 'http://feeds.feedburner.com/pnas/UJrK?format=xml'},
+  {title: 'Science', url: 'https://feeds.science.org/rss/science-aop.xml'},
+  {title: 'ScienceRobotics', url: 'https://feeds.science.org/rss/science-robotics.xml'},
+  {title: 'NatureGeoScienceCurrent', url: 'https://www.nature.com/ngeo.rss'},
+  {title: 'NatureGeoScience', url: 'https://www.nature.com/ngeo/current-issue'} // see location, needs cookie
 ]
 
 const PAGE2 = [
-  {title: 'ScienceAdvanced', url: 'http://advances.sciencemag.org/rss/current.xml'}
+  {title: 'ScienceAdvanced', url: 'https://feeds.science.org/rss/science-advances.xml'}
 ]
 
-const FUTURISM = {title: 'Futurism', url: 'https://futurism.com/feed/'}
+const FUTURISM = {title: 'Futurism', url: 'https://futurism.com/feed'}
 
 let news = FEEDS.reduce((g, f) => {
   g[f.title] = feedStore(f.title)
