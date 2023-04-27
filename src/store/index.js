@@ -6,7 +6,7 @@ import feedStore from './feed'
 Vue.use(Vuex)
 
 const FEEDS = [
-  {title: 'NatureCurrent', url: 'https://www.nature.com/nature.rss'},
+  {title: 'NatureCurrent', url: 'https://www.nature.com/srep.rss'},
 //  {title: 'NatureNewsComment', url: 'http://feeds.nature.com/NatureNewsComment?format=xml'},
   {title: 'NatureNanoTech', url: 'https://www.nature.com/nnano.rss'},
   {title: 'NatureBioTech', url: 'https://www.nature.com/nbt.rss'},
